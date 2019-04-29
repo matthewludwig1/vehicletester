@@ -1,18 +1,31 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Matt Ludwig
+    04-29-2019
+    This is a modified version of the vehicle tester client code
  */
 
 package vehicletester;
 
 import javax.swing.*;
 
-public class VehicleTester {
+public class Vehicletester {
   
     public static void main(String[] args) {
     Vehicle car1 = new Vehicle(7.5, 60.0, 60.0, 0.0);
+    double fare, fuelCost, profit;
     //Show Vehicle Info
+    int pass = Integer.parseInt(JOptionPane.showInputDialog("Enter the amount of passengers"
+            + " boarding this trip?"));
+     fare = Double.parseDouble(JOptionPane.showInputDialog("What is the fare in $?"));
+    
+     fuelCost = Double.parseDouble(JOptionPane.showInputDialog("What is the price of fuel "
+            + "in $/L?"));
+    
+    
+    System.out.println("Passengers: " + pass);
+    System.out.println("Fare $" + fare);
+    System.out.println("Fuel Cost: $" + fuelCost + "/L");
+
     System.out.println(car1);
 
     //Drive car for 100km
@@ -35,12 +48,9 @@ public class VehicleTester {
     car1.addFuel(100.0);
     System.out.println(car1);
     
-    int pass = Integer.parseInt(JOptionPane.showInputDialog("Enter the amount of passengers"
-            + " boarding this trip?"));
-    int fare = Integer.parseInt(JOptionPane.showInputDialog("What is the fare in $?"));
-    
-    int fuelCost = Integer.parseInt(JOptionPane.showInputDialog("What is the price of fuel "
-            + "in $/L?"));
-    car1.getTotalCost(pass, fare, fuelCost);
+    System.out.println("Revenue = " + car1.getRevenue(pass, fare));
+    System.out.println("Cost = " + car1.getTotalCost(fuelCost));
+    profit = (car1.getRevenue(pass, fare) - car1.getTotalCost(fuelCost));
+    System.out.println("Profit = " + profit);
   }
 }
