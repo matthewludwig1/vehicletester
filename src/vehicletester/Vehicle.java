@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+    Matt Ludwig
+    04-29-2019
+    This class hols the additional methods getRevenue, and getTotalCost 
  */
 
 package vehicletester;
@@ -64,15 +64,22 @@ public class Vehicle {
         " before running out of gas.");
     }
   }
-  public double getTotalCost(int pass, double far, double flcst) {
+  
+  public double getRevenue(int pass, double far) {
+      double revenue;
       passenger = pass;
       fare = far;
-      fuelCost = flcst;
-      
-      
+      revenue = (passenger) * (fare);
+      return revenue;
   }
   
-
+  public double getTotalCost(double flcst) {
+      fuelCost = flcst; 
+      double totalCost;
+      totalCost = (kilometresTravelled) * (fuelCost);
+      return totalCost;  
+  }
+  
   public String toString() {
     String output = "Gas Kilometrage = " + gasKilometrage+"\n";
     output += "Fuel Tank Size = " + fuelTankSize + "\n";
